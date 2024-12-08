@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоды по маршруту</title>
+</head>
+<body>
+    <h1>Введите начальную и конечную точки маршрута</h1>
+    <form action="/" method="POST">
+        <label for="start_city">Начальный город:</label>
+        <input type="text" id="start_city" name="start_city" required>
+        <br><br>
+        <label for="end_city">Конечный город:</label>
+        <input type="text" id="end_city" name="end_city" required>
+        <br><br>
+        <button type="submit">Оценить погоду</button>
+    </form>
+
+    {% if result %}
+        <h2>Результаты для маршрута:</h2>
+        <p>{{ result['evaluation'] }}</p>
+        <p>Средняя температура: {{ result['temperature'] }} °C</p>
+        <p>Скорость ветра: {{ result['wind_speed'] }} км/ч</p>
+        <p>Вероятность осадков: {{ result['rain_probability'] }} %</p>
+        <h2>{{ error }}</h2>
+    {% endif %}
+</body>
+</html>
